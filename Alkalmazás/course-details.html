@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/set/setNavbar.js"></script>
+    <script src="./js/functions/set/setUsername.js"></script>
+    <script src="./js/functions/login/logout.js"></script>
+    <script src="./js/functions/getValueFromUrl.js"></script>
+    <script src="./js/functions/load/loadCourseData.js"></script>
+    <script src="./js/functions/validate/validateCourseNameChangeForm.js"></script>
+    <script src="./js/functions/change/changeCourseName.js"></script>
+    <script src="./js/functions/dayNumToDayName.js"></script>
+    <script src="./js/functions/load/loadSchedules.js"></script>
+    <script src="./js/functions/create/createNewSchedule.js"></script>
+    <script src="./js/functions/delete/deleteScedule.js"></script>
+    <script src="./js/functions/load/loadCourseOccasions.js"></script>
+    <script src="./js/functions/create/createOccasions.js"></script>
+    <script src="./js/functions/load/loadParticipantsForCourse.js"></script>
+    <script src="./js/functions/delete/deletePartCourse.js"></script>
+    <script src="./js/pages/course-details.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>Kurzus részletek - TeamAd</title>
+</head>
+<body>
+    <nav id="navbar"></nav>
+    <div class="navbar-spacing"></div>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center my-4">Kurzus részletek</h1>
+            <div class="col-12 col-lg-5 col-xl-4 mb-3">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="m-0 text-center">Alapadatok</h3>
+                    </div>
+                    <div class="p-3">
+                        <table class="table table-sm">
+                            <tr>
+                                <td>Név:</td>
+                                <td id="courseNameCell"></td>
+                            </tr>
+                            <tr>
+                                <td>Alkalmak:</td>
+                                <td id="occasionCountCell"></td>
+                            </tr>
+                        </table>
+                        <form action="" method="post" id="courseNameChangeForm">
+                            <div class="col-12 mb-2">
+                                <label class="form-label">Kurzus nevének módosítása:</label>
+                                <input type="text" class="form-control" id="newCourseNameInput">
+                                <div id="newCourseNameFeedback"></div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" id="courseNameChangeFormSubmitBtn" class="btn btn-gray"><i class="fas fa-edit"></i> Módosítás</button>
+                            </div>
+                        </form>
+                        <div id="messageBox"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7 col-xl-8 mb-3">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="m-0 text-center">Beosztás</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <form action="" method="post" id="newScheduleForm">
+                            <table class="table table-hover" id="scheduleTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" colspan="2">Kezdés</th>
+                                        <th class="text-center" colspan="2">Befejezés</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <select name="start_day" id="startDayInput" class="form-select text-end">
+                                                <option value="">Válassz!</option>
+                                                <option value="1">Hétfő</option>
+                                                <option value="2">Kedd</option>
+                                                <option value="3">Szerda</option>
+                                                <option value="4">Csütörtök</option>
+                                                <option value="5">Péntek</option>
+                                                <option value="6">Szombat</option>
+                                                <option value="0">Vasárnap</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <input type="time" name="start_time" id="startTimeInput" class="form-control" required>
+                                        </th>
+                                        <th>
+                                            <select name="end_day" id="endDayInput" class="form-select text-end">
+                                                <option value="">Válassz!</option>
+                                                <option value="1">Hétfő</option>
+                                                <option value="2">Kedd</option>
+                                                <option value="3">Szerda</option>
+                                                <option value="4">Csütörtök</option>
+                                                <option value="5">Péntek</option>
+                                                <option value="6">Szombat</option>
+                                                <option value="0">Vasárnap</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <input type="time" name="end_time" id="endTimeInput" class="form-control" required>
+                                        </th>
+                                        <th class="text-center">
+                                            <button type="submit" class="btn btn-gray" id="newScheduleFormSubmitBtn"><i class="fas fa-plus"></i></button>
+                                        </th>
+                                    </tr>
+                                    <tr id="messageTableRow">
+                                        <td colspan="5">
+                                            <div class="alert alert-red text-center m-0">
+                                                <p class="mb-1"><strong>Az új időpontot nem sikerült rögzíteni!</strong></p>
+                                                <p class="mb-0">A kezdésnek korábbinak kell lennie, mint a befejezésnek.</p>
+                                                <p class="mb-0">Az új időpont nem ütközhet a meglévőekkel.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody id="scheduleTableBody"></tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-lg-5 col-xl-4 mb-3">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="text-center mb-0">Ütemezés</h3>
+                    </div>
+                    <div class="p-3">
+                        <form action="" method="post" id="occasionGeneratorForm">
+                            <label>Ütemezés kezdő dátuma:</label>
+                            <input type="date" id="startDateInput" class="form-control mb-3" required>
+                            <label>Alkalmak száma:</label>
+                            <input type="number" id="occasionCountInput" class="form-control mb-3" min="1" step="1" required>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-gray" id="occasionGeneratorFormSubmit"><i class="fas fa-play"></i> Ütemezés</button>
+                            </div>
+                        </form>
+                        <div id="occasionGeneratorMessageBox"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7 col-xl-8 mx-auto mb-3">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="mb-0 text-center">Alkalmak</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover" id="occasionTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" colspan="3">Kezdés</th>
+                                    <th class="text-center" colspan="3">Befejezés</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-end">Dátum</th>
+                                    <th class="text-center">Nap</th>
+                                    <th class="text-start">Idő</th>
+                                    <th class="text-end">Dátum</th>
+                                    <th class="text-center">Nap</th>
+                                    <th class="text-start">Idő</th>
+                                </tr>
+                            </thead>
+                            <tbody id="occasionTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 mb-4">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="mb-0 text-center">Névsor - <span id="courseParticipantCount"></span></h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="courseParticipantTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-end">ID</th>
+                                    <th>Teljes név</th>
+                                    <th>e-mail cím</th>
+                                    <th>Születési hely</th>
+                                    <th class="text-end">Születési idő</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="courseParticipantTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

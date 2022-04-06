@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/set/setNavbar.js"></script>
+    <script src="./js/functions/set/setUsername.js"></script>
+    <script src="./js/functions/login/logout.js"></script>
+    <script src="./js/functions/dayNumToDayName.js"></script>
+    <script src="./js/functions/load/loadCourses.js"></script>
+    <script src="./js/functions/validate/validateNewCourseForm.js"></script>
+    <script src="./js/functions/create/createNewCourse.js"></script>
+    <script src="./js/functions/delete/deleteCourse.js"></script>
+    <script src="./js/pages/courses.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>Kurzusok - TeamAd</title>
+</head>
+<body>
+    <nav id="navbar"></nav>
+    <div class="navbar-spacing"></div>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center my-4">Kurzusok kezelése</h1>
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header p-2" id="newCourseFormHeader">
+                        <h3 class="text-center m-0"><i class="fas fa-plus"></i> Új kurzus</h3>
+                    </div>
+                    <div class="p-3" id="newCourseFormContainer">
+                        <form action="" method="post" class="row" id="newCourseForm">
+                            <div class="col-12 mb-2">
+                                <label class="form-label">Kurzus neve:</label>
+                                <input type="text" class="form-control" id="courseNameInput">
+                                <div id="courseNameFeedback"></div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" id="newCourseFormSubmitBtn" class="btn btn-gray"><i class="fas fa-plus"></i> Létrehozás</button>
+                            </div>
+                        </form>
+                        <div id="messageBox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="m-0 text-center">Rögzített kurzusok</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="coursesTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-end">Id</th>
+                                    <th>Név</th>
+                                    <th class="text-end">Alkalmak</th>
+                                    <th colspan="3" class="text-center">Kezdés</th>
+                                    <th colspan="3" class="text-center">Befejezés</th>
+                                    <th colspan="3"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="coursesTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

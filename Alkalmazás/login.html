@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/login/userLogin.js"></script>
+    <script src="./js/pages/login.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>Bejelentkezés - TeamAd</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-4 mx-auto mt-4">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h2 class="m-0 text-lg-center">Bejelentkezés - TeamAd</h2>
+                    </div>
+                    <div class="p-3">
+                        <form action="" method="post" class="col-lg-9 col-xxl-8 mx-auto" id="loginForm">
+                            <label>Felhasználónév:</label>
+                            <input type="text" name="usernameInput" id="usernameInput" class="form-control mb-3" required>
+                            <label>Jelszó:</label>
+                            <input type="password" name="passwordInput" id="passwordInput" class="form-control mb-3" required>
+                            <div class="text-end text-lg-center">
+                                <button type="submit" class="btn btn-gray">Bejelentkezés <i class="fas fa-sign-in-alt"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="px-3" id="messageBox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

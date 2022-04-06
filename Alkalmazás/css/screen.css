@@ -1,0 +1,226 @@
+:root {
+    --light: #f0f0ee;
+    --lighter: #fefefe;
+    --lighter-gray: #33414e;
+    --lighter-gray-25: #33414e40;
+    --darker-gray: #2f3945;
+    --shadow-gray: #555;
+    --red: #b24443;
+    --red-25: #b2444340;
+    --orange: #e54724;
+    --yellow: #ffa628;
+    --dark-yellow: #c9821f;
+    --green: #98b86c;
+    --green-25: #98b86c40;
+    --dark-green: #586b3d;
+    --light-blue: #3fbae6;
+    --blue: #369abe;
+    --dark-blue: #266f8a;
+}
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: var(--light);
+}
+
+.box {
+    background-color: var(--lighter);
+    box-shadow: 0 1px 6px -2px var(--shadow-gray);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.box-header {
+    background-color: var(--lighter-gray);
+    background-image: linear-gradient(180deg, var(--lighter-gray), var(--darker-gray));
+    color: var(--lighter);
+}
+
+.btn-gray {
+    background-color: var(--lighter-gray);
+    color: var(--lighter);
+}
+
+.btn-gray:hover {
+    background-color: var(--darker-gray);
+    color: var(--light);
+}
+
+.btn-gray:focus {
+    box-shadow: 0 0 0 .25rem var(--lighter-gray-25);
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 .2rem var(--lighter-gray-25);
+    border-color: var(--lighter-gray);
+}
+
+nav {
+    background-color: var(--lighter-gray);
+    background-image: linear-gradient(180deg, var(--lighter-gray), var(--darker-gray));
+    box-shadow: 0 1px 6px -2px var(--shadow-gray);
+}
+
+.navbar-spacing {
+    height: 56px;
+}
+
+.dropdown-menu {
+    background-color: var(--lighter);
+    border-color: var(--lighter-gray-25);
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-blue);
+}
+
+.dropdown-item:focus {
+    color: var(--lighter);
+}
+
+.navbar .container .navbar-brand {
+    color: var(--lighter);
+}
+
+.navbar .container .collapse .navbar-nav .nav-item .nav-link {
+    color: var(--lighter);
+}
+
+.navbar .container .collapse .navbar-nav .nav-item .nav-link:hover {
+    color: var(--light-blue);
+}
+
+.navbar .container .collapse .navbar-nav .nav-item .nav-link:active {
+    color: var(--orange);
+}
+
+.alert-red {
+    background-color: var(--red-25);
+    color: var(--red);
+    border: none;
+}
+
+.alert-green {
+    background-color: var(--green-25);
+    color: var(--dark-green);
+    border: none;
+}
+
+#newUserFormHeader, #newCourseFormHeader, #newParticipantFormHeader {
+    cursor: pointer;
+    transition: color 0.2s ease 0s;
+}
+
+#newUserFormHeader:hover, #newCourseFormHeader:hover, #newParticipantFormHeader:hover {
+    color: var(--light-blue);
+}
+
+#newUserFormContainer, #newCourseFormContainer, #newParticipantFormContainer, #messageTableRow {
+    display: none;
+}
+
+#usersTable {
+    min-width: 400px;
+}
+
+#coursesTable {
+    min-width: 930px;
+}
+
+#scheduleTable, #occasionTable {
+    min-width: 510px;
+}
+
+#breaktimesTable {
+    min-width: 380px;
+}
+
+#participantsTable, #courseParticipantTable {
+    min-width: 930px;
+}
+
+#coursesForParticipantTable {
+    min-width: 470px;
+}
+
+.delete-btn, .delete-part-course {
+    cursor: pointer;
+    color: var(--orange);
+    transition: color 0.2s ease 0s;
+}
+
+.delete-btn:hover, .delete-part-course:hover {
+    color: var(--red);
+}
+
+.details-btn {
+    cursor: pointer;
+    color: var(--light-blue);
+    transition: color 0.2s ease 0s;
+}
+
+.details-btn:hover {
+    color: var(--blue);
+}
+
+.green-btn {
+    cursor: pointer;
+    color: var(--green);
+    transition: color 0.2s ease 0s;
+    width: 28px;
+    display: block;
+}
+
+.green-btn:hover {
+    color: var(--dark-green);
+}
+
+.mail-btn {
+    cursor: pointer;
+    color: var(--yellow);
+    transition: color 0.2s ease 0s;
+}
+
+.mail-btn:hover {
+    color: var(--dark-yellow);
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: var(--red);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23b24443'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+}
+
+.form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 .25rem var(--red-25);
+}
+
+.invalid-feedback {
+    color: var(--red);
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    border-color: var(--dark-green);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23586b3d' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+
+.form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+    border-color: var(--dark-green);
+    box-shadow: 0 0 0 .25rem var(--green-25);
+}
+
+.valid-feedback {
+    color: var(--dark-green);
+}
+
+
+#coursesForParticipantModal {
+    background-color: var(--lighter-gray-25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2000;
+    display: none;
+}

@@ -1,0 +1,116 @@
+#weekBox {
+    display: grid;
+    grid-template-columns: 10% calc(90% / 7) calc(90% / 7) calc(90% / 7) calc(90% / 7) calc(90% / 7) calc(90% / 7) calc(90% / 7);
+}
+
+.weekDayCol, #timeCol {
+    border: 1px solid var(--lighter-gray);
+    border-right: none;
+    height: calc(100vh - 200px);
+    min-height: 474px;
+}
+
+.weekDayCol {
+    background-color: var(--lighter-gray-25);
+}
+
+.header {
+    background-color: var(--darker-gray);
+    color: var(--lighter);
+    text-align: center;
+    font-weight: bold;
+}
+
+.header p {
+    margin: 0;
+    padding: 2px;
+}
+
+#timeCol {
+    border-left: none;
+    background-color: var(--darker-gray);
+    color: var(--lighter);
+}
+
+.timeContent div {
+    height: calc((100vh - 257px) / 12);
+    min-height: calc((474px - 57px) / 12);
+    border-bottom: 1px solid var(--lighter-gray);
+    box-sizing: border-box;
+}
+
+#timeCol p {
+    margin: 0;
+    text-align: center;
+}
+
+.content {
+    position:absolute;
+}
+
+.course-box, .break-box {
+    font-weight: bold;
+    padding: 6px;
+    box-sizing: border-box;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s ease 0s;
+    line-height: 1;
+    overflow: hidden;
+}
+
+.course-box p, .break-box p {
+    margin: 0;
+}
+
+.course-box {
+    background-color: var(--yellow);
+}
+
+.course-box:hover {
+    background-color: var(--dark-yellow);
+}
+
+.break-box {
+    background-color: var(--light-blue);
+}
+
+.break-box:hover {
+    background-color: var(--blue);
+}
+
+@media (max-width: 991px) {
+    #weekContainer p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    #weekContainer p {
+        font-size: 12px;
+    }
+
+    .course-box, .break-box {
+        padding: 2px;
+        line-height: 1;
+    }
+}
+
+@media (max-width: 495px) {
+    #weekContainer p {
+        font-size: 10px;
+    }
+
+    .btn-gray {
+        font-size: 12px;
+    }
+
+    .course-box, .break-box {
+        word-break: break-all;
+    }
+
+    #weekContainer .header p {
+        font-size: 7px;
+    }
+}

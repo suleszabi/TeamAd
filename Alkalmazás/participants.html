@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/set/setNavbar.js"></script>
+    <script src="./js/functions/set/setUsername.js"></script>
+    <script src="./js/functions/login/logout.js"></script>
+    <script src="./js/functions/validate/validateEmail.js"></script>
+    <script src="./js/functions/validate/validateParticipantForm.js"></script>
+    <script src="./js/functions/create/createNewParticipant.js"></script>
+    <script src="./js/functions/delete/deleteParticipant.js"></script>
+    <script src="./js/functions/load/loadParticipants.js"></script>
+    <script src="./js/functions/load/loadCoursesForParticipant.js"></script>
+    <script src="./js/functions/create/createPartCourseRelation.js"></script>
+    <script src="./js/pages/participants.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>Résztvevők - TeamAd</title>
+</head>
+<body>
+    <nav id="navbar"></nav>
+    <div class="navbar-spacing"></div>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center my-4">Résztvevők</h1>
+            <div class="col-12 mb-3">
+                <div class="box">
+                    <div class="box-header p-2" id="newParticipantFormHeader">
+                        <h2 class="text-center m-0"><i class="fas fa-user-plus"></i> Új résztvevő</h2>
+                    </div>
+                    <div class="p-3" id="newParticipantFormContainer">
+                        <form action="" method="post" class="row" id="newParticipantForm">
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Teljes név:</label>
+                                <input type="text" class="form-control newParticipantInput" id="nameInput">
+                                <div id="nameFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">e-mail cím:</label>
+                                <input type="email" class="form-control newParticipantInput" id="emailInput">
+                                <div id="emailFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Születési hely:</label>
+                                <input type="text" class="form-control newParticipantInput" id="birthplaceInput">
+                                <div id="birthplaceFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Születési idő:</label>
+                                <input type="date" class="form-control newParticipantInput" id="birthdateInput">
+                                <div id="birthdateFeedback"></div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" id="participantFormSubmitBtn" class="btn btn-gray"><i class="fas fa-plus"></i> Létrehozás</button>
+                            </div>
+                        </form>
+                        <div id="messageBox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="text-center m-0">Résztvevők listája</h3>
+                    </div>
+                    <div class="table-responsive table-hover table-sm">
+                        <table class="table" id="participantsTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-end">ID</th>
+                                    <th>Teljes név</th>
+                                    <th>e-mail cím</th>
+                                    <th>Születési hely</th>
+                                    <th class="text-end">Születési idő</th>
+                                    <th colspan="3"></th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <input type="text" id="IdSearchInput" class="form-control m-0 form-control-sm text-end searchInput" placeholder="Keresés ID-ra">
+                                    </th>
+                                    <th>
+                                        <input type="text" id="NameSearchInput" class="form-control m-0 form-control-sm searchInput" placeholder="Keresés névre">
+                                    </th>
+                                    <th>
+                                        <input type="text" id="emailSearchInput" class="form-control m-0 form-control-sm searchInput" placeholder="Keresés e-mail címre">
+                                    </th>
+                                    <th>
+                                        <input type="text" id="birthplaceSearchInput" class="form-control m-0 form-control-sm searchInput" placeholder="Keresés születési helyre">
+                                    </th>
+                                    <th>
+                                        <input type="text" id="birthdateSearchInput" class="form-control m-0 form-control-sm text-end searchInput" placeholder="Keresés születési időre">
+                                    </th>
+                                    <th colspan="3"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="participantsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="coursesForParticipantModal">
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-12 mt-5">
+                    <div class="box">
+                        <div class="box-header p-2">
+                            <h3 class="m-0 text-center">Csoportba sorolás</h3>
+                        </div>
+                        <div class="p-3">
+                            <h4 id="participantNameToCourse" class="text-center">Résztvevő neve</h4>
+                            <div id="coursesForParticipantModalMsg"></div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="coursesForParticipantTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-end">ID</th>
+                                        <th>Név</th>
+                                        <th class="text-end">Kezdés</th>
+                                        <th class="text-end">Befejezés</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="coursesForParticipantTableBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="text-end p-3">
+                            <button class="btn btn-gray btn-sm" id="coursesForParticipantModalCloseBtn"><i class="fas fa-window-close"></i> Bezárás</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

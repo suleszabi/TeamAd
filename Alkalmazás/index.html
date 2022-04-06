@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/set/setNavbar.js"></script>
+    <script src="./js/functions/set/setUsername.js"></script>
+    <script src="./js/functions/login/logout.js"></script>
+    <script src="./js/functions/set/setMondayUnix.js"></script>
+    <script src="./js/functions/set/setWeekDays.js"></script>
+    <script src="./js/functions/load/loadWeekContent.js"></script>
+    <script src="./js/pages/index.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <link rel="stylesheet" href="./css/week.css">
+    <title>TeamAd</title>
+</head>
+<body>
+    <nav id="navbar"></nav>
+    <div class="navbar-spacing"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <div class="box py-2">
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <button class="btn btn-gray btn-sm ms-3" id="prevWeekBtn"><i class="fas fa-arrow-left"></i> Előző hét</button>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="btn btn-gray btn-sm me-3" id="nextWeekBtn">Következő hét <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div id="weekContainer">
+                        <div id="weekBox">
+                            <div id="timeCol">
+                                <div class="header">
+                                    <p>Idő</p>
+                                    <p>óó:pp</p>
+                                </div>
+                                <div class="timeContent">
+                                    <div>
+                                        <p>00:00</p>
+                                    </div>
+                                    <div>
+                                        <p>02:00</p>
+                                    </div>
+                                    <div>
+                                        <p>04:00</p>
+                                    </div>
+                                    <div>
+                                        <p>06:00</p>
+                                    </div>
+                                    <div>
+                                        <p>08:00</p>
+                                    </div>
+                                    <div>
+                                        <p>10:00</p>
+                                    </div>
+                                    <div>
+                                        <p>12:00</p>
+                                    </div>
+                                    <div>
+                                        <p>14:00</p>
+                                    </div>
+                                    <div>
+                                        <p>16:00</p>
+                                    </div>
+                                    <div>
+                                        <p>18:00</p>
+                                    </div>
+                                    <div>
+                                        <p>20:00</p>
+                                    </div>
+                                    <div>
+                                        <p>22:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date0">2021</p>
+                                    <p>Hétfő</p>
+                                </div>
+                                <div class="content" id="content0"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date1">2021</p>
+                                    <p>Kedd</p>
+                                </div>
+                                <div class="content" id="content1"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p  id="date2">2021</p>
+                                    <p>Szerda</p>
+                                </div>
+                                <div class="content" id="content2"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date3">2021</p>
+                                    <p>Csütörtök</p>
+                                </div>
+                                <div class="content" id="content3"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date4">2021</p>
+                                    <p>Péntek</p>
+                                </div>
+                                <div class="content" id="content4"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date5">2021</p>
+                                    <p>Szombat</p>
+                                </div>
+                                <div class="content" id="content5"></div>
+                            </div>
+                            <div class="weekDayCol">
+                                <div class="header">
+                                    <p id="date6">2021</p>
+                                    <p>Vasárnap</p>
+                                </div>
+                                <div class="content" id="content6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

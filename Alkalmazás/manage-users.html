@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <script src="./js/functions/makeRequest.js"></script>
+    <script src="./js/functions/login/loginCheck.js"></script>
+    <script src="./js/functions/set/setNavbar.js"></script>
+    <script src="./js/functions/set/setUsername.js"></script>
+    <script src="./js/functions/login/logout.js"></script>
+    <script src="./js/functions/validate/validateEmail.js"></script>
+    <script src="./js/functions/validate/validatePassword.js"></script>
+    <script src="./js/functions/validate/validateNewUserForm.js"></script>
+    <script src="./js/functions/create/createNewUser.js"></script>
+    <script src="./js/functions/load/loadUsers.js"></script>
+    <script src="./js/functions/delete/deleteUser.js"></script>
+    <script src="./js/pages/manage-users.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./img/logo-icon-32.png" type="image/png" sizes="32x32">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>Felhasználók kezelése - TeamAd</title>
+</head>
+<body>
+    <nav id="navbar"></nav>
+    <div class="navbar-spacing"></div>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center my-4">Felhasználók kezelése</h1>
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header p-2" id="newUserFormHeader">
+                        <h2 class="text-center m-0"><i class="fas fa-user-plus"></i> Új felhasználó</h2>
+                    </div>
+                    <div class="p-3" id="newUserFormContainer">
+                        <form action="" method="post" class="row" id="newUserForm">
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Felhasználónév:</label>
+                                <input type="text" class="form-control" id="usernameInput">
+                                <div id="usernameFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">e-mail cím:</label>
+                                <input type="email" class="form-control" id="emailInput">
+                                <div id="emailFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Jelszó:</label>
+                                <input type="password" class="form-control" id="passwordInput">
+                                <div id="passwordFeedback"></div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-3 mb-2">
+                                <label class="form-label">Jelszó:</label>
+                                <input type="password" class="form-control" id="passwordConfirmInput">
+                                <div id="passwordConfirmFeedback"></div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" id="newUserFormSubmitBtn" class="btn btn-gray"><i class="fas fa-plus"></i> Létrehozás</button>
+                            </div>
+                        </form>
+                        <div id="messageBox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header p-2">
+                        <h3 class="m-0 text-center">Rögzített felhasználók</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-end">Id</th>
+                                    <th>Felhasználónév</th>
+                                    <th>e-mail</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
